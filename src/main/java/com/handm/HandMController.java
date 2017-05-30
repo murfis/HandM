@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +22,6 @@ public class HandMController {
 
 	@Autowired
 	private ExecutionRepository repository;
-
-	private static final Logger logger = LoggerFactory.getLogger(HandMController.class);
 
 	@RequestMapping("/init")
 	public String initForm(Model model) {
@@ -57,7 +53,6 @@ public class HandMController {
 	private Execution sortList(ArrayList<Integer> listOfNumbers) {
 		
 		System.out.println("sorting list");
-		logger.debug("sorting list");
 		Execution execution = new Execution();
 		Random randomGenerator = new Random();
 		Date start = new Date();
@@ -67,8 +62,6 @@ public class HandMController {
 			int random1 = randomGenerator.nextInt(listOfNumbers.size());
 			int random2 = randomGenerator.nextInt(listOfNumbers.size());
 			if(random1<random2){
-				System.out.println("moving from a to b");
-				logger.debug("moving from a to b");
 				if(listOfNumbers.get(random1)>listOfNumbers.get(random2)){
 					int tmp = listOfNumbers.get(random1);
 					listOfNumbers.set(random1, listOfNumbers.get(random2));
@@ -76,8 +69,6 @@ public class HandMController {
 					howManyChanges ++;
 				}
 			}if(random2<random1){
-				System.out.println("moving from b to a");
-				logger.debug("moving from b to a");
 				if(listOfNumbers.get(random2)>listOfNumbers.get(random1)){
 					int tmp = listOfNumbers.get(random2);
 					listOfNumbers.set(random2, listOfNumbers.get(random1));
