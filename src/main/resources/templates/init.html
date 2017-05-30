@@ -1,48 +1,57 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"/>
-    <style>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+<style>
 table {
-    border-collapse: collapse;
-    width: 100%;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 th, td {
-    text-align: left;
-    padding: 8px;
+	text-align: left;
+	padding: 8px;
 }
-tr:nth-child(even){background-color: #f2f2f2}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
 </style>
 </head>
 <body>
-    <p th:text="'sdasHello, ' + ${name} + '!'" />
-    
-    <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
-    	<p>Id: <input type="text" th:field="*{id}" /></p>
-        <p>Message: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-    
-    
-    
-    <table>
-  <thead>
-    <tr>
-      <th >Last Execution time</th>
-      <th >how long</th>
-       <th >how many changes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="execution: ${previousExecutions}">
-      <td th:text="${execution.date}"></td>
-      <td th:text="${execution.howLong}"></td>
-    </tr>
-  </tbody>
-</table>
-    
+
+	<form action="#" th:action="@{/init}" th:object="${listToSort}"
+		method="post">
+		<p>
+			Id: <input type="text" th:field="*{numbers}" />
+		</p>
+
+		<p>
+			<input type="submit" value="Sort" /> <input type="reset"
+				value="Reset" />
+		</p>
+	</form>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Last Execution time</th>
+				<th>how long</th>
+				<th>how many changes</th>
+				<th>sorted list</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="execution: ${previousExecutions}">
+				<td th:text="${execution.lastExecution}"></td>
+				<td th:text="${execution.howLong}"></td>
+				<td th:text="${execution.howManyChanges}"></td>
+				<td th:text="${execution.sortedList}"></td>
+			</tr>
+		</tbody>
+	</table>
+
 </body>
 </html>
